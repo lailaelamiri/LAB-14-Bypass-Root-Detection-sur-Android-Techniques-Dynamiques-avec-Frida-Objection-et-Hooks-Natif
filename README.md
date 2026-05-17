@@ -43,6 +43,8 @@ objection --version
 
 Confirm `adb devices` shows `emulator-5554   device` and that Frida and Objection versions are installed before proceeding.
 
+<img width="533" height="105" alt="image" src="https://github.com/user-attachments/assets/88d8182e-7a35-4795-af48-3953cf63b57d" />
+
 ---
 
 ## Part 1 — Environment Setup
@@ -63,12 +65,15 @@ adb push frida-server /data/local/tmp/frida-server
 adb shell chmod 755 /data/local/tmp/frida-server
 adb shell "/data/local/tmp/frida-server &"
 ```
+<img width="1381" height="88" alt="image" src="https://github.com/user-attachments/assets/cd649f06-a3be-4199-aada-0f098694c61e" />
+
 
 ### 1.2 Verify Device Visibility
 
 ```
 frida-ps -Uai
 ```
+<img width="1118" height="623" alt="Screenshot 2026-05-17 100542" src="https://github.com/user-attachments/assets/768a53a8-f0d3-423b-98fe-a7373a20f9af" />
 
 The target app should appear in the list:
 
@@ -103,6 +108,7 @@ This is unacceptable. The app is now going to exit.
 Pressing OK terminates the process. The app is completely unusable in this state.
 
 **Screenshot — Root detected dialog before bypass**
+<img width="392" height="599" alt="Screenshot 2026-05-17 100715" src="https://github.com/user-attachments/assets/66680e98-05ad-42cc-977a-9fb88e5a9e40" />
 
 ---
 
@@ -188,12 +194,15 @@ Note: `--no-pause` was removed in Frida 16+. Use `%resume` in the REPL instead.
 ```
 
 **Screenshot — Frida console output after injection**
+<img width="1274" height="903" alt="Screenshot 2026-05-17 102057" src="https://github.com/user-attachments/assets/1df68925-48b8-4811-a699-5a9c4c2fd1b9" />
+
 
 ### 3.5 Result
 
 The app loads its main interface without the root detection dialog. The secret string input field is accessible and the VERIFY button is responsive.
 
 **Screenshot — App running normally after Frida bypass**
+<img width="320" height="534" alt="Screenshot 2026-05-17 102045" src="https://github.com/user-attachments/assets/4c12fd5c-f88d-4e4a-b713-e8f0985d2ef6" />
 
 ---
 
@@ -237,6 +246,7 @@ owasp.mstg.uncrackable1 (run) on (Android: 11) [usb] #
 ```
 
 **Screenshot — Objection console connected to target**
+<img width="966" height="457" alt="Screenshot 2026-05-03 120117" src="https://github.com/user-attachments/assets/aba7858b-8695-4b91-94a0-07c5be9dbef3" />
 
 ### 5.3 Disabling Root Detection
 
@@ -264,7 +274,7 @@ Job ID   Type   Name
 975458   hook   root-detection-disable
 ```
 
-**Screenshot — Objection jobs list showing active hook**
+<img width="966" height="457" alt="Screenshot 2026-05-03 120117" src="https://github.com/user-attachments/assets/0e8962c7-21ea-4284-9a9c-5b5fb1f56e78" />
 
 ### 5.4 What android root disable Does
 
@@ -282,6 +292,7 @@ Behind the command, Objection injects a Frida script covering the following Java
 With the job active, the app renders its main interface without any detection dialog.
 
 **Screenshot — App running cleanly after Objection bypass**
+<img width="389" height="468" alt="Screenshot 2026-05-03 120107" src="https://github.com/user-attachments/assets/1f2ce8c7-eb02-4165-bc11-5f6fdb6d0210" />
 
 ---
 
@@ -320,6 +331,7 @@ Start a Medusa session against the target package:
 ```
 medusa -f owasp.mstg.uncrackable1
 ```
+<img width="908" height="706" alt="Screenshot 2026-05-03 103414" src="https://github.com/user-attachments/assets/010a744d-2189-4e92-ac8b-c8c50c52ac15" />
 
 ### 7.3 Loading the Root Bypass Module
 
